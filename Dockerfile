@@ -33,4 +33,5 @@ RUN cd gpu && \
     make py
 
 RUN echo "export PYTHONPATH=\$PYTHONPATH:/opt/faiss" >> ~/.bashrc
-CMD ["/bin/bash", "-c", "jupyter-notebook --no-browser --ip='*' --notebook-dir=/ --allow-root --port 8000"]
+ENV PYTHONPATH "$PYTHONPATH:/opt/faiss"
+CMD ["jupyter-notebook",  "--no-browser", "--ip='*'", "--notebook-dir=/", "--allow-root", "--port=8000"]
